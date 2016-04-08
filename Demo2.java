@@ -10,16 +10,13 @@ public class Demo2 {
 
 	try(ObjectInputStream os = new ObjectInputStream(new FileInputStream("test.ser"))){
 		List<Member> peopleList = (ArrayList<Member>)os.readObject();
-		//System.out.println(peopleList);
+		System.out.println(peopleList);
 		Scanner scan = new Scanner(System.in);
 		boolean check = false;
 
 		MembershipDemo member = new MembershipDemo();
-		
 		System.out.println("1.Sign up\n2.Log in");
 		int choice = scan.nextInt();
-		
-		
 		
 		if(choice == 1){
 			while(!check){
@@ -37,6 +34,7 @@ public class Demo2 {
 				Member both = member.both();
 				peopleList.add(both);
 			}
+			/*
 			System.out.println("Enter 1 to continue");
 			int cont = scan.nextInt();
 				if(cont == 1){
@@ -45,15 +43,23 @@ public class Demo2 {
 				else{
 					check = true;
 				}
+				*/
+			
 		member.serialize(peopleList, "test.ser");
 		System.out.println(peopleList);
 		}
 		}
-//---------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------//
 		
 	if(choice == 2){
+		Member person = member.LoginSystem();
+		member.MaintainMembership(person);
 		
-		member.LoginSystem();
+		//member.LoginSystem();
+		//individual.LoginSystem();
+		System.out.println(person);
+		//System.out.println(peopleList);
+		member.serialize(peopleList, "test.ser");
 		
 	}		
 			}catch (FileNotFoundException e) {

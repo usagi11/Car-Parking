@@ -3,11 +3,7 @@ import java.util.*;
 
 public class SuperDemo {
 	public static void main(String[] args) throws IOException, ClassNotFoundException{
-		/*try{
-			ObjectInputStream os = new ObjectInputStream(new FileInputStream("test.ser"));
-		*/
-		//ArrayList<Member> memberlist = (ArrayList<Member>)os.readObject();
-		//os.close();
+
 		ArrayList<Member> memberlist = new ArrayList<Member>();
 		MembershipDemo member = new MembershipDemo();
 		Scanner scan = new Scanner(System.in);

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Member implements Serializable{
 
-	private static final long serialVersionUID = 773224935045247053L;
+	private static final long serialVersionUID = 1L;
 	private String firstName;
 	private String lastName;
 	private String userName;
@@ -12,15 +12,14 @@ public class Member implements Serializable{
 	private int id;
 	private String email;
 	private int status;
+	private Vehicle vehicle;
 	private String v_model;
 	private String v_register;
-	private String r_date;
 	private int numberOfPassenger;
-	
+	//private MemberSchedule schedule;
 	
 	//default constructor
 	public Member(){};
-	
 
 	
 	//passenger 
@@ -34,19 +33,17 @@ public class Member implements Serializable{
 		this.status = status;
 	}
 	//driver or both
-	public Member(String firstName, String lastName, String userName, String password, int id, String email, 
-			int status, String v_model,String v_register,String r_date, int numberOfPassenger){
+	public Member(String firstName, String lastName, String userName, String password, int id, String email,int status, Vehicle vehicle){
 		this(firstName, lastName, userName, password, id, email, status);
-		this.v_model = v_model;
-		this.v_register= v_register;
-		this.r_date = r_date;
-		this.numberOfPassenger = numberOfPassenger;
+		this.vehicle = vehicle;
+
 	}
 
 	public Member(String userName, String password){
 		this.userName = userName;
 		this.password = password;
 	}
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -127,14 +124,6 @@ public class Member implements Serializable{
 	}
 
 
-	public String getR_date() {
-		return r_date;
-	}
-
-
-	public void setR_date(String r_date) {
-		this.r_date = r_date;
-	}
 	public int getNumberOfPassenger() {
 		return numberOfPassenger;
 	}
@@ -167,31 +156,31 @@ public class Member implements Serializable{
 	 {
 		 this.status=n;
 	 }
-	 public String toString(){
-		 return "Name: " + getFirstName() + " " + getLastName() + "\n" + "User name: " + getUserName() +
-				 "\n" + "SJSU ID: " + getId() + "\n" + "Email: " + getEmail() + "\n";
-	 }
 
-	public String AccountInfo(Member individual){
+	public String toString(){
 		if(getStatus() == 1){
-			return "Name: " + getFirstName() + " " + getLastName() + "\n" + "User name: " + getUserName() +
+			return "=========Personal info======================" +
+					"\nName: " + getFirstName() + " " + getLastName() + "\n" + "User name: " + getUserName() +
 					 "\n" + "SJSU ID: " + getId() + "\n" + "Email: " + getEmail() + "\n" +
-					 "Vehicle model: " + getV_model() + "\n" + "Regstration number: " + getV_register() + "\n" +
-					 "Expire date: " + getR_date() + "\n" + "Number of Passengers which you can take \n" + getNumberOfPassenger()+ " people";
+					 "========Car info======================" +
+					 "\nVehicle model: " + vehicle.getCarModel() + "\n" + "Regstration number: " + vehicle.getCarPlate() + 
+					 "\n" + "Number of Passengers which you can take \n" + vehicle.getNumberOfPassenger()+ " people\n";
 		}
 		if(getStatus() == 2){
-			return "Name: " + getFirstName() + " " + getLastName() + "\n" + "User name: " + getUserName() +
-					 "\n" + "SJSU ID: " + getId() + "\n" + "Email: " + getEmail();
+			return "=========Personal info======================" +
+					"\nName: " + getFirstName() + " " + getLastName() + "\n" + "User name: " + getUserName() +
+					 "\n" + "SJSU ID: " + getId() + "\n" + "Email: " + getEmail()+ "\n";
 		}
 		if(getStatus() == 3){
-			return "Name: " + getFirstName() + " " + getLastName() + "\n" + "User name: " + getUserName() +
+			return "=========Personal info======================" +
+					"\nName: " + getFirstName() + " " + getLastName() + "\n" + "User name: " + getUserName() +
 					 "\n" + "SJSU ID: " + getId() + "\n" + "Email: " + getEmail() + "\n" +
-					 "Vehicle model: " + getV_model() + "\n" + "Regstration number: " + getV_register() + "\n" +
-					 "Expire date: " + getR_date() + "\n" + "Number of Passengers which you can take \n" + getNumberOfPassenger()+ " people";
+					 "========Car info======================" +
+					 "Vehicle model: " + vehicle.getCarModel() + "\n" + "Regstration number: " + vehicle.getCarPlate() + "\n" + "Number of Passengers which you can take \n" +
+					 vehicle.getNumberOfPassenger()+ " people\n";
 		}
+
 		return null;
 	}
-
-	
 
 }
